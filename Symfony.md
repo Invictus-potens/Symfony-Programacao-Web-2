@@ -1,28 +1,49 @@
-PHP symfony
-Symfony é um dos frameworks mais robustos, populares e influentes do PHP, criado em 2005 pela empresa SensioLabs (uma empresa francesa de consultoria de php) para suprir um vazio no mercado.  
-Antes do Symfony o ecossistema de PHP era dominado por programações misturadas com código HTML e frameworks primitivos que eram mais uma coleção de funções prontas do que um framework consolidado, então a criação de sistemas grandes era muito caótico, difícil de manter e propenso a falhas de segurança.
-A filosofia criada pela equipe da SensioLabs era a seguinte:  
-Usar as melhores práticas já utilizadas pelas principais linguagens corporativas do mercado na época (Java com Spring, e Ruby com Ruby on Rails.) O objetivo era parar de tentar inventar a roda, no lugar de escrever um sistema de autenticação, roteamento e manipulação do banco de dados do zero, os desenvolvedores poderiam usar componentes prontos.
-Symfony evoluiu e mudou desde sua criação:
-Symfony 1.x (2005 a 2011): Ele era focado em velocidade de desenvolvimento e fortemente inspirado em Ruby on Rails. Ganhou muita tração mas sofria de problemas de performance em certas partes.
-Symfony 2 (Lançado em 2011): A SensioLabs reescreveu o framework do zero, adotando o conceito de framworks independentes e abraçando o padrão do PHP-FIG. Essa mudança foi de tão grande sucesso que outros projetos gigantes da comunidade (Laravel, Drupal, Magento/Adobe Commerce e PrestaShop) passaram a adotar os componentes do Symfony por debaixo do capô.
-Como o Symfony se destaca?
-Arquitetura baseada em componentes.  
-Symfony não é um framework monolitico, ele é um conjunto com mais de 30 componentes reutilizáveis e desacoplados.(Routing, EventDispatcher, Form, Validator, etc.), você usar o framework completo ou importar somente os componentes que deseja usar.
-Reutilização e o Ecossistema PHP.  
-Grande empresas do mercado escolhem o Symfony por ele servir de base por outros grandes frameworks.
-Laravel construiu grande parte da sua arquitetura interna(Como roteamento, gerenciamento de requisições e console) utilizando componentes do Symfony.
-Drupal(versão 8 e diante) e o Magento 2 usam o núcleo do Symfony para estruturar suas arquiteturas.
-Estabilidade, Longevidade e Versionamento Semântico.
-O Symfony tem uma política rigorosa e de retrocompatibilidade, se sua aplicação foi construída em uma versão antiga, atualizar para uma versão mais nova é um processo previsível e seguro.
-Versões LTS (Long term support), garante que Symfony receba suporte e correções durante anos, o que acaba sendo crucial para empresas de grande e médio porte.
-Alta performance e Flexibilidade
-Com o passar dos anos a SensioLabs investiu fortemente em otimização de desempenho, atualmente Symfony conta com recursos avançados como Symfony runtime e integração nativa com RoadRunner ou FrankenPHP(Servidores de aplicação), fazendo com que as aplicações rodem em servidores de longa execução.
-Ferramentas de produtividade (CLI e MakerBundle)
-Symfony CLI é uma ferramenta de linha de comando que gerencia servidores de desenvolvimento locais, certificados TLS, variáveis de ambientes e executa testes.
-MakerBundle gera rapidamente esquueletos de código para controllers, entidades formulários e testes, reduzindo o trabalho repetitivo.
-Sistemas de Testes e Qualidade
-O Symfony foi desenhado desde o inicio para ser facilmente testável. Ele possui nativamente integrações com ferramentas para testes como PHPUnit e Panther. permitindo testes automatizados extremamente confiáveis.
+<p align="center">
+  <img src="https://symfony.com/logos/symfony_black_03.svg" alt="Symfony Logo" width="120" />
+</p>
+
+<h1 align="center">PHP Symfony</h1>
+
+O **Symfony** é um dos frameworks mais robustos, populares e influentes do PHP, criado em 2005 pela empresa **SensioLabs** (uma empresa francesa de consultoria de PHP) para suprir um vazio no mercado.
+
+Antes do Symfony, o ecossistema de PHP era dominado por programações misturadas com código HTML e frameworks primitivos que eram mais uma coleção de funções prontas do que um framework consolidado, então a criação de sistemas grandes era muito caótica, difícil de manter e propenso a falhas de segurança.
+
+A filosofia criada pela equipe da SensioLabs era a seguinte: usar as melhores práticas já utilizadas pelas principais linguagens corporativas do mercado na época (**Java com Spring** e **Ruby com Ruby on Rails**). O objetivo era parar de tentar inventar a roda; no lugar de escrever um sistema de autenticação, roteamento e manipulação do banco de dados do zero, os desenvolvedores poderiam usar componentes prontos.
+
+---
+
+## Evolução do Symfony
+
+* **Symfony 1.x (2005 a 2011):** Focado em velocidade de desenvolvimento e fortemente inspirado em Ruby on Rails. Ganhou muita tração, mas sofria de problemas de performance em certas partes.
+* **Symfony 2 (Lançado em 2011):** A SensioLabs reescreveu o framework do zero, adotando o conceito de frameworks independentes e abraçando o padrão do **PHP-FIG**. Essa mudança foi de tão grande sucesso que outros projetos gigantes da comunidade (**Laravel, Drupal, Magento/Adobe Commerce e PrestaShop**) passaram a adotar os componentes do Symfony por debaixo do capô.
+
+---
+
+## Como o Symfony se destaca?
+
+### Arquitetura baseada em componentes
+O Symfony não é um framework monolítico; ele é um conjunto com mais de 30 componentes reutilizáveis e desacoplados (`Routing`, `EventDispatcher`, `Form`, `Validator`, etc.). Você pode usar o framework completo ou importar somente os componentes que deseja usar.
+
+### Reutilização e o Ecossistema PHP
+Grandes empresas do mercado escolhem o Symfony por ele servir de base para outros grandes frameworks:
+* **Laravel:** construiu grande parte da sua arquitetura interna (como roteamento, gerenciamento de requisições e console) utilizando componentes do Symfony.
+* **Drupal (versão 8 em diante) e Magento 2:** usam o núcleo do Symfony para estruturar suas arquiteturas.
+
+### Estabilidade, Longevidade e Versionamento Semântico
+* O Symfony tem uma política rigorosa de retrocompatibilidade: se sua aplicação foi construída em uma versão antiga, atualizar para uma versão mais nova é um processo previsível e seguro.
+* Versões **LTS (Long Term Support)** garantem que o Symfony receba suporte e correções durante anos, o que acaba sendo crucial para empresas de grande e médio porte.
+
+### Alta Performance e Flexibilidade
+Com o passar dos anos, a SensioLabs investiu fortemente em otimização de desempenho. Atualmente, o Symfony conta com recursos avançados como o **Symfony Runtime** e integração nativa com **RoadRunner** ou **FrankenPHP** (servidores de aplicação), fazendo com que as aplicações rodem em servidores de longa execução.
+
+### Ferramentas de Produtividade (CLI e MakerBundle)
+* **Symfony CLI:** ferramenta de linha de comando que gerencia servidores de desenvolvimento locais, certificados TLS, variáveis de ambiente e executa testes.
+* **MakerBundle:** gera rapidamente esqueletos de código para *controllers*, entidades, formulários e testes, reduzindo o trabalho repetitivo.
+
+### Sistemas de Testes e Qualidade
+O Symfony foi desenhado desde o início para ser facilmente testável. Ele possui nativamente integrações com ferramentas para testes como **PHPUnit** e **Panther**, permitindo testes automatizados extremamente confiáveis.
+
+---
 Instalando PHP, Composer que é o gerenciador de dependências do PHP, como o “node” no javascript, além disso a instalação do symfony CLI.
 1 - windows
 ```sh
