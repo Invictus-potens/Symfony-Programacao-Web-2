@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symfony API Client - Demonstração Prática</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <span class="badge-framework">PHP 8.2+ / Symfony 7</span>
+        <h1>Demonstração Frontend &middot; API Symfony</h1>
+      </div>
+      <div class="connection-status" id="connection-status" aria-live="polite">
+        <span class="status-indicator status-checking" id="status-dot"></span>
+        <span id="status-label">Verificando API Symfony...</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <section class="card config-card" aria-labelledby="titulo-ambiente">
+      <div class="card-header">
+        <h2 id="titulo-ambiente">Ambiente de Conexão</h2>
+        <span class="badge-info">Configurações de Rede</span>
+      </div>
+      <div class="config-controls">
+        <div class="input-group">
+          <label for="api-base-url">URL Base da API Symfony:</label>
+          <input 
+            type="url" 
+            id="api-base-url" 
+            value="http://127.0.0.1:8000" 
+            placeholder="http://127.0.0.1:8000"
+            required 
+          />
+        </div>
+        <button type="button" id="btn-testar-conexao" class="btn btn-secondary">
+          Testar Conexão
+        </button>
+        <div class="toggle-group">
+          <label class="switch" for="toggle-mock">
+            <input type="checkbox" id="toggle-mock" />
+            <span class="slider round"></span>
+          </label>
+          <label for="toggle-mock" class="label-toggle">
+            Modo Simulação (Offline/Demo)
+          </label>
+        </div>
+      </div>
+      <p class="config-hint">
+        <strong>Dica:</strong> Se o servidor Symfony estiver rodando no terminal com <code>symfony server:start --no-tls</code>, o cliente se comunicará diretamente com o PHP via HTTP. Se o servidor estiver desligado, ative o <em>Modo Simulação</em> para testar o comportamento do frontend.
+      </p>
+    </section>
+
+    <div class="grid-controllers">
+      
+      <!-- OlaController (GET /ola/{nome}) -->
+      <section class="card" aria-labelledby="titulo-ola">
+        <div class="card-header">
+          <h2 id="titulo-ola">1. Endpoint <code>/ola/{nome}</code></h2>
+          <span class="badge-route">GET</span>
+        </div>
+        <p class="card-description">
+          Demonstra a passagem de parâmetros pela URL capturados pelo atributo <code>#[Route('/ola/{nome}')]</code> do <code>OlaController</code>.
+        </p>
+
+        <form id="form-ola" class="controller-form" novalidate>
+          <div class="input-group">
+            <label for="nome-saudacao">Digite seu nome:</label>
+            <input 
+              type="text" 
+              id="nome-saudacao" 
+              placeholder="Ex: Ettora, Felipão, Marcola..." 
+              required 
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" id="btn-enviar-ola">
+            Executar GET /ola/{nome}
+          </button>
+        </form>
+
+        <div class="response-box" id="box-resposta-ola" aria-live="polite">
+          <span class="response-placeholder">Nenhuma requisição enviada ainda.</span>
+        </div>
+      </section>
+
+      <!-- TarefaController (GET e POST /api/tarefas) -->
+      <section class="card" aria-labelledby="titulo-tarefas">
+        <div class="card-header">
+          <h2 id="titulo-tarefas">2. Endpoint <code>/api/tarefas</code></h2>
+          <div class="route-badges">
+            <span class="badge-route">GET</span>
+            <span class="badge-route badge-post">POST</span>
+          </div>
+        </div>
+        <p class="card-description">
+          Persistência em arquivo JSON gerida pelo <code>TarefaController</code>, enviando e listando dados via JSON.
+        </p>
+
+        <!-- Formulário de Criação (POST) -->
+        <form id="form-criar-tarefa" class="controller-form" novalidate>
+          <div class="input-group">
+            <label for="titulo-nova-tarefa">Título da nova tarefa:</label>
+            <input 
+              type="text" 
+              id="titulo-nova-tarefa" 
+              placeholder="Ex: Estudar Rotas no Symfony..." 
+              required 
+            />
+          </div>
+          <button type="submit" class="btn btn-success" id="btn-criar-tarefa">
+            Criar Tarefa (POST)
+          </button>
+        </form>
+
+        <!-- Seção da Lista de Tarefas (GET) -->
+        <div class="list-section">
+          <div class="list-header">
+            <h3>Tarefas Salvas no Servidor</h3>
+            <button type="button" class="btn btn-sm btn-outline" id="btn-recarregar-tarefas">
+              Atualizar Lista (GET)
+            </button>
+          </div>
+          
+          <ul class="task-list" id="lista-tarefas" aria-live="polite">
+            <li class="empty-state">Clique em "Atualizar Lista" para buscar as tarefas do servidor.</li>
+          </ul>
+        </div>
+      </section>
+      
+    </div>
+
+    <section class="card inspector-card" aria-labelledby="titulo-inspetor">
+      <div class="card-header">
+        <h2 id="titulo-inspetor">Inspetor de Tráfego HTTP</h2>
+        <span class="badge-status-code" id="inspector-status-badge">Pronto</span>
+      </div>
+      <p class="card-description">
+        Requisição HTTP enviada do navegador para o Symfony e o payload JSON trafegado na rede.
+      </p>
+
+      <div class="inspector-grid">
+        <div class="inspector-column">
+          <h3>Requisição Enviada (Frontend &rarr; Symfony)</h3>
+          <pre class="code-box"><code id="inspector-request">// Aguardando requisição...</code></pre>
+        </div>
+        <div class="inspector-column">
+          <h3>Resposta Recebida (Symfony &rarr; Frontend)</h3>
+          <pre class="code-box"><code id="inspector-response">// Aguardando resposta do backend...</code></pre>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
